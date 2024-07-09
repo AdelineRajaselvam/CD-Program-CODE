@@ -1,0 +1,46 @@
+Code:
+#include <stdio.h>
+ int labelIndex = 0;
+ char* generateLabel() {
+ static char label[10];
+ sprintf(label, "L%d", labelIndex++);
+ return label;
+ }
+ void generateIfCode(char* condition, char* trueLabel, char* falseLabel) {
+ printf("IF %s GOTO %s ELSE GOTO %s\n", condition, trueLabel, falseLabel);
+ }
+ void generateWhileCode(char* condition, char* startLabel, char* endLabel) 
+{
+ printf("%s:\n", startLabel);
+ printf("IF %s GOTO %s ELSE GOTO %s\n", condition, endLabel, endLabel);
+ }
+ int main() {
+ 
+ char* ifCondition = "x < y";
+ char* ifTrueLabel = generateLabel(); 
+ char* ifFalseLabel = generateLabel();
+ generateIfCode(ifCondition, ifTrueLabel, ifFalseLabel); 
+ printf("%s: printf(\"x is less than y\\n\");\n", ifTrueLabel); 
+ printf("%s: printf(\"x is not less than y\\n\");\n", ifFalseLabel); 
+ char* whileCondition = "i < 5";
+ char* whileStartLabel = generateLabel(); 
+ char* whileEndLabel = generateLabel(); 
+ generateWhileCode(whileCondition, whileStartLabel, whileEndLabel); 
+ printf("%s: printf(\"i: %%d\\n\", i);\n", whileStartLabel); 
+ printf("i++;\n"); 
+ printf("GOTO %s;\n", whileStartLabel); 
+ printf("%s:\n", whileEndLabel);
+ return 0;
+ }
+
+ Output:
+
+ IF x < y GOTOL1ELSEGOTOL1
+ L1: printf("x is less than y\n");
+ L1: printf("x is not less than y\n");
+ L3:
+ IF i < 5 GOTOL3ELSEGOTOL3
+ L3: printf("i: %d\n", i);
+ i++;
+ GOTOL3;
+ L3:
