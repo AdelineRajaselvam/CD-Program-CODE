@@ -1,0 +1,35 @@
+
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+
+bool isLeftRecursive(const string& production, char nonTerminal) {
+    return production[0] == nonTerminal;
+}
+
+int main() {
+    char nonTerminal = 'A'; // Non-terminal to check for left recursion
+    vector<string> productions = {"aa", "b"}; // Example productions
+
+    bool leftRecursive = false;
+    for (const auto& production : productions) {
+        if (isLeftRecursive(production, nonTerminal)) {
+            leftRecursive = true;
+            break;
+        }
+    }
+
+    if (leftRecursive) {
+        cout << "The grammar has left recursion for non-terminal " << nonTerminal << endl;
+    } else {
+        cout << "The grammar does not have left recursion for non-terminal " << nonTerminal << endl;
+    }
+
+    return 0;
+}
+
+
+Output :
+
+The grammar does not have left recursion for non-terminal A
