@@ -33,3 +33,44 @@ int main(int argc, char *argv[]) {
     yylex();
     return 0;
 }
+
+File 1
+       Code:
+integer num1, num2, sum;
+read num1, num2;
+sum = num1 + num2;
+display sum;
+ 
+File 2
+Code:
+integer a, b;
+read a, b;
+if (a > b) then
+{
+    display a;
+}
+else
+{
+    ​display b;
+}
+
+File 3
+Code:
+integer i, n;
+read n;
+i = 1;
+while (i <= n)
+{
+    display i;
+    i++;
+}
+
+File 4
+Code:
+integer i, n;
+read n;
+for i = 1 to n step 2
+{
+    display a;
+}
+
