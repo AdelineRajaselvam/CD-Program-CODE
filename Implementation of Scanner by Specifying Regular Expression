@@ -1,0 +1,33 @@
+Code :
+
+%option noyywrap
+%{
+#include<stdio.h>
+%}
+
+char [a-zA-Z]
+digit [0-9]
+relop <|<=|==|#|>=|>
+ariop [+\-/*]
+incr [++]
+decr [--]
+assn [=]
+special [\(\)\{\}\,\;]
+
+%%
+if|then|else|for|while {printf("\n%s : Keywords", yytext);}
+{relop} {printf("\n%s : Relational Operators", yytext);}
+{ariop} {printf("\n%s : Arithmetic Operators", yytext);}
+{incr} {printf("\n%s : Increment Operator", yytext);}
+{decr} {printf("\n%s : Decrement Operators", yytext);}
+{assn} {printf("\n%s : Assignment Operators", yytext);}
+{special} {printf("\n%s : Special Operators", yytext);}
+{char}({char}|{digit})* {printf("\n%s : Identifier",yytext);}
+
+. ;
+%%
+
+int main() {
+    yylex();
+    return 0;
+}
