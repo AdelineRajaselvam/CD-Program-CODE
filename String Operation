@@ -1,0 +1,105 @@
+
+Code:
+#include <iostream>
+#include <string>
+using namespace std;
+
+void concatenateStrings() {
+    string str1, str2;
+    cout << "Enter first string: ";
+    cin.ignore(); // Ignore newline character
+    getline(cin, str1);
+    cout << "Enter second string: ";
+    getline(cin, str2);
+    cout << "Concatenated string: " << str1 + str2 << endl;
+}
+
+void calculateStringLength() {
+    string str;
+    cout << "Enter a string: ";
+    cin.ignore(); // Ignore newline character
+    getline(cin, str);
+    cout << "Length of the string: " << str.length() << endl;
+}
+
+void compareStrings() {
+    string str1, str2;
+    cout << "Enter first string: ";
+    cin.ignore(); // Ignore newline character
+    getline(cin, str1);
+    cout << "Enter second string: ";
+    getline(cin, str2);
+    if (str1 == str2)
+        cout << "Strings are equal.\n";
+    else
+        cout << "Strings are not equal.\n";
+}
+
+int main() {
+    int choice;
+
+    do {
+        cout << "Menu:\n";
+        cout << "1. Concatenate Strings\n";
+        cout << "2. Calculate Length of String\n";
+        cout << "3. Compare Strings\n";
+        cout << "4. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice) {
+            case 1:
+                concatenateStrings();
+                break;
+            case 2:
+                calculateStringLength();
+                break;
+            case 3:
+                compareStrings();
+                break;
+            case 4:
+                cout << "Exiting program.\n";
+                break;
+            default:
+                cout << "Invalid choice. Please enter a number between 1 and 4.\n";
+        }
+    } while (choice != 4);
+
+    return 0;
+}
+
+Output :
+
+Menu:
+1. Concatenate Strings
+2. Calculate Length of String
+3. Compare Strings
+4. Exit
+Enter your choice: 1
+Enter first string: Hello
+Enter second string: World
+Concatenated string: HelloWorld
+Menu:
+1. Concatenate Strings
+2. Calculate Length of String
+3. Compare Strings
+4. Exit
+Enter your choice: 2
+Enter a string: Hello
+Length of the string: 5
+Menu:
+1. Concatenate Strings
+2. Calculate Length of String
+3. Compare Strings
+4. Exit
+Enter your choice: 3
+Enter first string: Hello
+Enter second string: World
+Strings are not equal.
+Menu:
+1. Concatenate Strings
+2. Calculate Length of String
+3. Compare Strings
+4. Exit
+Enter your choice: 4
+Exiting program
